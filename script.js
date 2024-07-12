@@ -1,13 +1,32 @@
 let humanScore = 0;
 let computerScore = 0;
 
+function playRound(humanChoice, computerChoice) {
+    // All win conditions
+    if ((humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")
+    ) {
+        console.log(`You've won ${humanChoice} wins over ${computerChoice}`);
+        humanScore++;
+    }
+    // Tie
+    else if (humanChoice === computerChoice) {
+        console.log("It's a tie");
+    }
+    // Lose
+    else {
+        console.log(`You lose ${computerChoice} wins over ${humanChoice}`);
+        computerScore++;
+    }
+}
 
 
 
 
 // Function that let's the CPU randomly pick one of the three strings inside the array.
 function getComputerChoice() {
-    const choices = ["rock", "paper", "scissor"];
+    const choices = ["rock", "paper", "scissors"];
     const randomChoice = Math.floor(Math.random() * 3);
     return choices[randomChoice];
 }
@@ -20,7 +39,7 @@ console.log(getComputerChoice());
 let userInput = prompt("Enter rock, paper or scrissor").toLowerCase();
 
 function getHumanChoice(input) {
-    if (input === "rock" || input === "paper" || input === "scissor") {
+    if (input === "rock" || input === "paper" || input === "scissors") {
         return input;
     } else {
         alert("You've entered a wrong value");
