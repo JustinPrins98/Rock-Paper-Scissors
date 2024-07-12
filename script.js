@@ -1,3 +1,9 @@
+let humanScore = 0;
+let computerScore = 0;
+
+
+
+
 
 // Function that let's the CPU randomly pick one of the three strings inside the array.
 function getComputerChoice() {
