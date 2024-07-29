@@ -3,6 +3,7 @@ function playGame() {
     let humanScore = 0;
     let computerScore = 0;
 
+
     // Function that decides who wins the round
     function playRound(humanChoice, computerChoice) {
         // All win conditions
@@ -40,28 +41,37 @@ function playGame() {
         }
     }
 
+    const rockButton = document.querySelector("#rock");
+    const paperButton = document.querySelector("#paper");
+    const scissorsButton = document.querySelector("#scissors");
+
+    rockButton.addEventListener("click", () => playRound("rock"));
+    paperButton.addEventListener("click", () => playRound("rock"));
+    scissorsButton.addEventListener("click", () => playRound("rock"));
+
+    console.log(rockButton, paperButton, scissorsButton);
+
     // Function so the user can enter a string, the functions checks if the string has the corrert value and then returns the input.
     // When the value is wrong the user will get Alert.
-    for (let i = 0; i < 5; i++) {
-        let userInput = prompt("Enter rock, paper or scrissor").toLowerCase();
-        let userAnswer = getHumanChoice(userInput);
 
-        if (userAnswer) {
-            console.log(`Round ${i + 1}:`)
-            console.log(`You have chosen ${userAnswer}`);
+    let userInput = prompt("Enter rock, paper or scrissor").toLowerCase();
+    let userAnswer = getHumanChoice(userInput);
 
-            const humanSelection = userAnswer;
-            const computerSelection = getComputerChoice();
-            console.log(`Computer has chosen ${computerSelection}`);
+    if (userAnswer) {
+        console.log(`You have chosen ${userAnswer}`);
 
-            playRound(humanSelection, computerSelection);
+        const humanSelection = userAnswer;
+        const computerSelection = getComputerChoice();
+        console.log(`Computer has chosen ${computerSelection}`);
 
-            console.log(`Human score: ${humanScore} Computer score: ${computerScore}`);
-            console.log("_____________________")
-        } else {
-            i--; // Doesn't count this round if the user input is invalid.
-        }
+        playRound(humanSelection, computerSelection);
+
+        console.log(`Human score: ${humanScore} Computer score: ${computerScore}`);
+        console.log("_____________________")
+    } else {
+        i--; // Doesn't count this round if the user input is invalid.
     }
+
 
     console.log("GAME OVER");
     console.log(`Final score: Human ${humanScore} Computer ${computerScore}`);
