@@ -1,28 +1,34 @@
+
 function playGame() {
     // score variables
     let humanScore = 0;
     let computerScore = 0;
+    const result = document.querySelector("#results");
 
 
     // Function that decides who wins the round
-    function playRound(humanChoice, computerChoice) {
+    function playRound(humanChoice) {
+        const computerChoice = getComputerChoice();
         // All win conditions
         if ((humanChoice === "rock" && computerChoice === "scissors") ||
             (humanChoice === "paper" && computerChoice === "rock") ||
             (humanChoice === "scissors" && computerChoice === "paper")
         ) {
-            console.log(`You've won ${humanChoice} wins over ${computerChoice}`);
+            result.textContent += `You've won ${humanChoice} wins over ${computerChoice}`;
             humanScore++; // Increments human score
         }
         // Tie
         else if (humanChoice === computerChoice) {
-            console.log("It's a tie");
+            result.textContent += "It's a tie";
         }
         // Lose
         else {
-            console.log(`You lose ${computerChoice} wins over ${humanChoice}`);
+            result.textContent += `You lose ${computerChoice} wins over ${humanChoice}`;
             computerScore++; // Increments computer score
         }
+
+        result.textContent += `Human score: ${humanScore} Computer score: ${computerScore}`;
+        result.textContent += "_____________________\n";
     }
 
     // Function that let's the CPU randomly pick one of the three strings inside the array.
@@ -32,57 +38,41 @@ function playGame() {
         return choices[randomChoice];
     }
 
-    function getHumanChoice(input) {
-        if (input === "rock" || input === "paper" || input === "scissors") {
-            return input;
-        } else {
-            alert("You've entered a wrong value");
-            return null;
-        }
-    }
+
 
     const rockButton = document.querySelector("#rock");
     const paperButton = document.querySelector("#paper");
     const scissorsButton = document.querySelector("#scissors");
 
     rockButton.addEventListener("click", () => playRound("rock"));
-    paperButton.addEventListener("click", () => playRound("rock"));
-    scissorsButton.addEventListener("click", () => playRound("rock"));
+    paperButton.addEventListener("click", () => playRound("paper"));
+    scissorsButton.addEventListener("click", () => playRound("scissors"));
 
-    console.log(rockButton, paperButton, scissorsButton);
+    result.textContent = "Let's play Rock, Paper, Scissors!";
 
     // Function so the user can enter a string, the functions checks if the string has the corrert value and then returns the input.
     // When the value is wrong the user will get Alert.
 
-    let userInput = prompt("Enter rock, paper or scrissor").toLowerCase();
-    let userAnswer = getHumanChoice(userInput);
-
-    if (userAnswer) {
-        console.log(`You have chosen ${userAnswer}`);
-
-        const humanSelection = userAnswer;
-        const computerSelection = getComputerChoice();
-        console.log(`Computer has chosen ${computerSelection}`);
-
-        playRound(humanSelection, computerSelection);
-
-        console.log(`Human score: ${humanScore} Computer score: ${computerScore}`);
-        console.log("_____________________")
-    } else {
-        i--; // Doesn't count this round if the user input is invalid.
-    }
 
 
-    console.log("GAME OVER");
-    console.log(`Final score: Human ${humanScore} Computer ${computerScore}`);
 
-    if (humanScore > computerScore) {
-        console.log("Congratulations you've won the game")
-    } else if (humanScore < computerScore) {
-        console.log("To bad you've lost");
-    } else {
-        console.log("It's a tie");
-    }
+
+
+
+
+
+    // result.textContent("GAME OVER");
+    // result.textContent(`Final score: Human ${humanScore} Computer ${computerScore}`);
+
+    // if (humanScore > computerScore) {
+    //     result.textContent("Congratulations you've won the game")
+    // } else if (humanScore < computerScore) {
+    //     result.textContent("To bad you've lost");
+    // } else {
+    //     result.textContent("It's a tie");
+    // }
+
+
 }
 
 
