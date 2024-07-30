@@ -1,0 +1,19 @@
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+div {
+    max-width: 20em;
+    word-wrap: break-word;
+    height: 5em;
+    text-align: center;
+    align-content: center;
+}

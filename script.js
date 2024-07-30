@@ -6,6 +6,7 @@ function playGame() {
 
     // Function that decides who wins the round
     function playRound(humanChoice) {
+        result.textContent = "";
         const computerChoice = getComputerChoice();
         // All win conditions
         if ((humanChoice === "rock" && computerChoice === "scissors") ||
@@ -26,7 +27,7 @@ function playGame() {
         }
 
         result.textContent += `Human score: ${humanScore} Computer score: ${computerScore}\n`;
-        result.textContent += "_____________________\n";
+
 
         checkWinner();
     }
@@ -52,7 +53,7 @@ function playGame() {
         humanScore = 0;
         computerScore = 0;
         result.textContent += "Game reset. Let's play again!\n";
-        result.textContent += "_____________________\n";
+
         result.textContent = "";
     }
 
